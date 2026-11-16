@@ -9,7 +9,7 @@ import asyncio, ctypes, json, os, pathlib, sys
 
 LED = pathlib.Path("/sys/class/leds/rgb:status")
 VR_STATE = pathlib.Path("/run/deckardcharger/vr_state")
-CONF = pathlib.Path.home() / ".config/frame-led/state.json"
+CONF = pathlib.Path.home() / ".config/frame-lights-out/state.json"
 IN_MODIFY, IN_ATTRIB, IN_CREATE, IN_NONBLOCK, IN_CLOEXEC = 0x2, 0x4, 0x100, 0o4000, 0o2000000
 
 _off = False
@@ -17,7 +17,7 @@ _wake = None
 
 
 def _log(*a):
-    print("frame-led:", *a, file=sys.stderr, flush=True)
+    print("frame-lights-out:", *a, file=sys.stderr, flush=True)
 
 
 def _load():

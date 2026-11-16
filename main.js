@@ -2,9 +2,9 @@
 // Adds a row to SteamVR's Quick Settings (next to Wi-Fi / Airplane mode) and a
 // Framey tab as a fallback. The row is cloned from Valve's own toggle row so it
 // picks up the native look without depending on hashed class names.
-const ID = "frame-led";
+const ID = "frame-lights-out";
 const LABEL = "Status light";
-const MARK = "data-frame-led";
+const MARK = "data-frame-lights-out";
 const ICON =
   '<circle cx="18" cy="18" r="6.5" fill="currentColor"/>' +
   '<path fill="currentColor" d="M16.5 2h3v6h-3zM16.5 28h3v6h-3zM2 16.5h6v3H2zM28 16.5h6v3h-6z' +
@@ -30,7 +30,7 @@ const paint = () => {
     cb.setAttribute("aria-checked", String(S.light));
     onCls.forEach(c => cb.classList.toggle(c, S.light));
     row.style.opacity = S.known ? "" : "0.5";
-    const t = row.querySelector("[data-frame-led-text]");
+    const t = row.querySelector("[data-frame-lights-out-text]");
     if (t) t.textContent = LABEL + (onCls.length ? "" : S.light ? " (on)" : " (off)");
   }
   if (S.tabBtn && S.tabBtn.isConnected) {
@@ -83,7 +83,7 @@ const mount = doc => {
   texts.forEach((n, i) => {
     if (i) return void (n.textContent = "");
     const span = doc.createElement("span");
-    span.setAttribute("data-frame-led-text", "");
+    span.setAttribute("data-frame-lights-out-text", "");
     span.textContent = LABEL;
     n.replaceWith(span);
   });
@@ -117,12 +117,12 @@ const watch = () => {
       let pending = 0;
       const obs = new win.MutationObserver(() => {
         if (S.dead || pending) return;
-        pending = win.setTimeout(() => { pending = 0; try { mount(doc); } catch (e) { console.warn("frame-led", e); } }, 100);
+        pending = win.setTimeout(() => { pending = 0; try { mount(doc); } catch (e) { console.warn("frame-lights-out", e); } }, 100);
       });
       obs.observe(doc.body, { childList: true, subtree: true });
       S.docs.set(doc, obs);
     }
-    try { mount(doc); } catch (e) { console.warn("frame-led", e); }
+    try { mount(doc); } catch (e) { console.warn("frame-lights-out", e); }
   }
 };
 

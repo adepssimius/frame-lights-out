@@ -1,4 +1,4 @@
-# Status Light for Steam Frame
+# Frame Lights Out
 
 A [Framey](https://github.com/chaosfox26/framey) plugin that turns off the
 status LED on the side of the Steam Frame. It adds a **Status light** toggle to
@@ -15,11 +15,11 @@ a Steam update can break it.
 You need Framey running on the headset.
 
 - **Framey Settings tab:** paste this link and press Install:
-  `https://github.com/adepssimius/frame-led/releases/latest/download/frame-led.zip`
-- **Framey App:** install `frame-led.zip` from the
-  [latest release](https://github.com/adepssimius/frame-led/releases/latest),
+  `https://github.com/adepssimius/frame-lights-out/releases/latest/download/frame-lights-out.zip`
+- **Framey App:** install `frame-lights-out.zip` from the
+  [latest release](https://github.com/adepssimius/frame-lights-out/releases/latest),
   or give it this repository's link.
-- **By hand:** copy this folder to `~/framey/plugins/frame-led` and press
+- **By hand:** copy this folder to `~/framey/plugins/frame-lights-out` and press
   "Reload modules" in Framey's Settings tab.
 
 ## How it works
@@ -29,7 +29,7 @@ You need Framey running on the headset.
 - While the light is switched off, the backend watches the LED and darkens it
   again whenever Valve's `ledcontrol` daemon repaints it (charger plugged in,
   low battery, wake).
-- The setting is saved in `~/.config/frame-led/state.json` and applied again
+- The setting is saved in `~/.config/frame-lights-out/state.json` and applied again
   when Framey starts.
 - Switching the light back on, or disabling or removing the plugin, hands the
   LED back to `ledcontrol`. To make the daemon repaint, the plugin briefly
